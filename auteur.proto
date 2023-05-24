@@ -1,0 +1,98 @@
+syntax = "proto3";
+
+package auteur;
+import "book.proto";
+
+message Auteur {
+  string id = 1;
+  string name = 2;
+  Book book = 3;
+}
+
+message GetAuteurRequest {
+  string auteur_id = 1;
+}
+
+message GetAuteurResponse {
+  Auteur auteur = 1;
+}
+
+message SearchAuteursRequest {
+  string query = 1;
+}
+
+message SearchAuteursResponse {
+  repeated Auteur auteurs = 1;
+}
+
+message CreateAuteurRequest {
+  string auteur_id = 1;
+  string name = 2;
+  string book_id = 3;
+}
+
+message CreateAuteurResponse {
+  Auteur auteur = 1;
+}
+
+message DeleteAuteurRequest {
+  string auteur_id = 1;
+}
+
+message DeleteAuteurResponse {
+  bool success = 1;
+}
+
+service AuteurService {
+  rpc GetAuteur(GetAuteurRequest) returns (GetAuteurResponse);
+  rpc SearchAuteurs(SearchAuteursRequest) returns (SearchAuteursResponse);
+  rpc CreateAuteur(CreateAuteurRequest) returns (CreateAuteurResponse);
+  rpc DeleteAuteur(DeleteAuteurRequest) returns (DeleteAuteurResponse);
+}
+
+
+
+
+
+
+
+
+/*
+message CreateAuteurRequest {
+  string auteur_id = 1;
+  string name = 2;
+  Book book = 3;
+}
+
+message CreateAuteurResponse {
+  Auteur auteur = 1;
+}
+
+
+message UpdateAuteurRequest {
+  string book_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message UpdateAuteurResponse {
+  Auteur book = 1;
+}
+
+message DeleteAuteurRequest {
+  string book_id = 1;
+}
+
+message DeleteAuteurResponse {
+  bool success = 1;
+}
+
+service AuteurService {
+  rpc GetAuteur(GetAuteurRequest) returns (GetAuteurResponse);
+  rpc SearchAuteurs(SearchAuteursRequest) returns (SearchAuteursResponse);
+  rpc CreateAuteur(CreateAuteurRequest) returns (CreateAuteurResponse);
+  rpc UpdateAuteur(UpdateAuteurRequest) returns (UpdateAuteurResponse);
+  rpc DeleteAuteur(DeleteAuteurRequest) returns (DeleteAuteurResponse);
+}
+
+*/
